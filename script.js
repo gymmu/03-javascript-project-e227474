@@ -95,7 +95,7 @@ export function aufgabe06(args) {
   return false
 }
 
-function aufgabe07(args) {
+export function aufgabe07(args) {
   const input = args
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
@@ -118,7 +118,8 @@ for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]        
     if (currentElement === "e") {   
       result.push(3)   //replaces "e"'s with 3's                                                      
-    } else {                                                 
+    } 
+    else {                                                 
       result.push(currentElement)//doesn't replace anything
     }
   }
@@ -150,9 +151,11 @@ export function aufgabe10 (args) {
  
   if(48 <= ascii && ascii <=57) {//checksif input consits of numbers
        
-   } else if (65 <= ascii && ascii <= 70) {//checks if input consists of letters found in HEX RGB codes
+   } 
+  else if (65 <= ascii && ascii <= 70) {//checks if input consists of letters found in HEX RGB codes
         
-   } else {
+   } 
+  else {
      return false
    }
  }
@@ -207,3 +210,174 @@ export function aufgabe13 (args) {
 
   return positE 
 }
+
+export function aufgabe15 (args) {
+  const input = args
+  const result = []
+
+  if (input.lastIndexOf(' ') == input.length - 1) {
+      for (let i = 0; i < input.length - 1; i++) {
+        const currentElement = input[i]
+        result.push(currentElement)
+      }
+  }
+  else {
+    for (let i = 0; i < input.length; i++) {
+      const currentElement = input[i]
+  
+      if (currentElement !== " ") {
+        result.push(currentElement)
+      }
+      else {
+        return result.join("")
+      }
+    }
+  }
+  return result.join("")
+}
+
+export function aufgabe16 (args) {
+  const input = args
+  const res1 = []
+  const res2 = []
+  let sortedtext = true
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    
+    if (currentElement == "$" && sortedtext == true) {
+      sortedtext = false
+    } 
+    else {
+      if (sortedtext == true) {
+        res1.push(currentElement)
+      }
+      else if(sortedtext == false) {
+        res2.push(currentElement)
+      }
+    }
+  }
+  if (res2.join("") !== "") {
+  return res1.join("") + "," + res2.join("")
+  } 
+  else {
+    return res1.join("")
+  }
+}
+
+export function aufgabe18 (args) {
+  const input = args
+  const Name = []
+  const age = []
+  let sortedtext = true
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    
+    if (currentElement == " " && sortedtext == true) {
+      sortedtext = false
+    } 
+    else {
+      if (sortedtext == true) {
+        Name.push(currentElement)
+      }
+      else if (sortedtext == false) {
+        age.push(currentElement)
+      }
+    }
+  }
+  if (Name.join("") !== "" && age.join("") !== "") return "Sie heissen " + Name.join("") + " und sind " + age.join("") + " Jahre alt"
+  if (Name.join("") == "" && age.join("") !== "") return "Sie heissen" + Name.join("") + " und sind " + age.join("") + " Jahre alt"
+  if (Name.join("") !== "" && age.join("") == "") return "Sie heissen " + Name.join("") + " und sind " + age.join("") + "Jahre alt"
+  if (Name.join("") == "" && age.join("") == "") return "Sie heissen" + Name.join("") + " und sind " + age.join("") + "Jahre alt"
+}
+
+export function aufgabe19 (args) {
+  const input = args
+  const result = []
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    result.push(currentElement)
+    result.push(currentElement) //sends every character twice
+  }
+  return result.join("")
+}
+
+export function aufgabe20 (args) {
+  const input = args
+  const result = []
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    if(currentElement == "." && input[i+1] !== " "){ //if dot isn't followed by a space, retrns false
+      return false
+    }
+    else if(currentElement == "."){ 
+      if(input[i+1] == " "){  // if dot is followed by a space, returns true
+        return true
+      }
+    }
+  }
+  return result.join("")
+}
+
+export function aufgabe21 (args) {
+  const input = args  // defines the string input
+  const result = [] // defines the array used to return the reslut
+  const reversed = input.split("").reverse().join("") // splits  the string into an array and reverses it
+  result.push(reversed)
+return result.join("")
+}
+
+export function aufgabe22 (args) {
+  const input = args
+  const result = []
+  var kdetect = false
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+
+    if(kdetect == true){
+      result.push(currentElement)
+    }
+    else if(input[i] !== "k" && input[i+1] !== "k"){
+      result.push("_")  //if charcter is not "K", returns "_"
+    }
+    else if(input[i] == "k" && input[i+1] !== "k"){
+      result.push(currentElement)
+      kdetect = true
+    }
+    }
+  return result.join("")
+}
+
+export function aufgabe24 (args) {
+  const input = args
+  const result = []
+
+  if (input.length === 1 ){return input} //if input is only 1 character, returns the character
+
+  const first = input[0] //first character
+  const last = input[input.length - 1] // last character
+
+  result.push(last) // first returns the last character
+  for (let  i = 1; i < input.length - 1; i++) {
+    const currentElement = input[i]
+    result.push(currentElement) //return everything else inbetween
+  }
+  result.push(first) //returns the first character as last
+  return result.join("")
+}
+
+export function aufgabe25 (args) {
+  const input = args
+  const result = []
+  
+  if (input.length < 3) {
+    return ("") //returns nothing if no inbetween characters exist
+  }
+  if (input.length > 2) { //if inbetween characters exist, returns the first and last character
+    result.push(input[0]) // returns first character
+    result.push(input[input.length - 1]) // retrns last character
+  }
+  return result.join("")
+}
+
