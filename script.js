@@ -381,3 +381,20 @@ export function aufgabe25 (args) {
   return result.join("")
 }
 
+export function bubblesort (args){
+const input = args
+const list = input.split("") //turns string inou into array, so it can be sorted
+for (let i = 0; i < list.length - 1; i++) {
+  const current = list[i]
+  const next = list[i + 1]
+  if (current.charCodeAt(0) > next.charCodeAt(0)) { //if the order isn't correct, reorders
+    const tmp = list[i + 1]
+    list[i + 1] = list[i]
+    list[i] = tmp
+    i = -1//starts  from beginng
+  }
+}
+const result = list.join("")
+return result
+}
+
